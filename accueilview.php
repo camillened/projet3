@@ -15,7 +15,7 @@
 	    <article>
 	    	<header>
 	        <h3 class="billetTitle">
-	            <a href="<?= "billet.php?id=" . $billet['id'] ?>"><!--lien vers billet-->
+	            <a href="<?= "index.php?action=billet&id=" . $billet['id'] ?>"><!--lien vers un billet-->
 	            <?= htmlspecialchars($billet['billet_title']) ?>
 	        	</a>
 	        </h3>

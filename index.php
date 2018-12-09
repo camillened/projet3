@@ -1,14 +1,32 @@
 <?php
 
-require 'modele.php';
+require 'controller.php';
 
 try 
 {
-	$billets = getBillets();
-	require 'accueilview.php';
+  if (isset($_GET['action'])) 
+  {
+    if ($_GET['action'] == 'billet') 
+    {
+      if (isset($_GET['billet_id'])) 
+      {
+        $idBillet = intval($_GET['billet_id']);
+        if ($idBillet != 0)
+          billet($idBillet);
+        else
+          throw new Exception("Identifiant de billet non valide");
+      }
+      else
+        throw new Exception("Identifiant de billet non défini");
+    }
+    else
+      throw new Exception("Action non valide");
+  }
+  else 
+  {
+    accueil();  // action par défaut
+  }
 }
-catch (exception $e)
-{
-	$msgErreur = $e->getMessage();
-	require 'erreurview.php';
+catch (Exception $e) {
+    erreur($e->getMessage());
 }
