@@ -1,6 +1,6 @@
 <?php
 
-require 'controller.php';
+require 'Controller/Controller.php';
 
 try 
 {
@@ -10,9 +10,9 @@ try
     {
       if (isset($_GET['billet_id'])) 
       {
-        $idBillet = intval($_GET['billet_id']);
-        if ($idBillet != 0)
-          billet($idBillet);
+        $billet_id = intval($_GET['billet_id']);
+        if ($billet_id != 0)
+          billet($billet_id);
         else
           throw new Exception("Identifiant de billet non valide");
       }

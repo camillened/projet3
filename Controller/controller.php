@@ -1,21 +1,21 @@
 <?php
 
-require 'modele.php';
+require 'Modele/Modele.php';
 
 // l'accuil affiche la liste de tous les billets du blog
 function accueil() {
   $billets = getBillets();
-  require 'accueilview.php';
+  require 'View/Accueilview.php';
 }
 
 // Affiche les détails sur un billet
 function billet($billet_id) {
   $billet = getBillet($billet_id);
-  $commentaires = getCommentss($billet_id);
-  require 'billetview.php';
+  $commentaires = getComments($billet_id);
+  require 'View/Billetview.php';
 }
 
 // Affiche une erreur
 function erreur($msgErreur) {
-  require 'erreurview.php';
+  require 'View/Erreurview.php';
 }

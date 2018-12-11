@@ -1,5 +1,5 @@
 
-<?php require('modele.php'); ?>
+<?php require('Modele/Modele.php'); ?>
 
 <?php $title = ' "Billet simple pour l\'Alaska"'; ?>
 
@@ -33,7 +33,7 @@
 	?>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('View/Template.php'); ?>
 
 
 <!-- ?action=billet&billet_id=1-->

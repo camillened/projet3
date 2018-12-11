@@ -1,48 +1,35 @@
 
 
 <?php
-// Renvoie la liste de tous les billets
-function getBillets() 
+
+abstract class Modele //abstraite : fourni à ses classes dérivées un service d'exécution d'une requête sql
+
 {
-  $db = getDb();
-  $billets = $db->query('SELECT billet_id, billet_date, billet_title, billet_content FROM billets ORDER BY billet_id DESC');
-  return $billets;
-}
 
+private $db; // objet PDO d'accès à la DB
 
-// connexion à la DB
-// Instancie et renvoie l'objet PDO associé
-try
+protected function executerRequete ($sql, $params = null)
 {
-	function getDb() 
-	{
-	$db = new PDO('mysql:host=localhost;dbname=projet3;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING)); // On émet une alerte à chaque fois qu'une requête a échoué.
-	return $db;
-	}
+  if ($params == null)//ex : pas de n° id  -> exécution directe
+  {
+    $resultat = $this->getDb()->query($sql);
+  }
+  else//ex : on a un id billet -> requête préparée
+  {
+    $resultat = $this->getDb()->prepare($sql);
+    $resultat->execute($params);
+  }
+  return $resultat;
 }
-catch (exception $e) //en cas d'erreur on stop et on affiche l'erreur
+
+private function getDb()
 {
-	$msgErreur = $e->getMessage();
-	require 'vueerreur.php';
-}
-//si tout va bien on continue
-
-
-// Renvoie les informations sur un billet
-function getBillet($billet_id) {
-  $db = getDb();
-  $billets = $bdd->prepare('SELECT billet_id, billet_date, billet_title, billet_content FROM billets WHERE billet_id=?');
-  $billets->execute(array($billet_id));
-  if ($billets->rowCount() == 1)
-    return $billets->fetch();  // Accès à la première ligne de résultat
-  else
-   throw new Exception("Aucun billet ne correspond à l'identifiant '$billet_id'");
+  if ($this->db == null)//création de la connexion
+  {
+    $this->$db = new PDO('mysql:host=localhost;dbname=projet3;charset=utf8',
+        'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+  }
+  return $this->db;
 }
 
-// Renvoie la liste des commentaires associés à un billet
-function getComments($billet_id) {
-  $db = getDb();
-  $comments = $db->prepare('SELECT comment_id, comment_date, comment_author, comment_title, billet_id FROM comments WHERE billet_id=?');
-  $comments->execute(array($billet_id));
-  return $comments;
 }
