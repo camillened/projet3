@@ -1,8 +1,8 @@
 <?php
-//ceci est le modèle des billets
-require_once 'Modele/Modele.php';
 
-echo 'poifgdfpgio';
+echo 'est ce que "billet" s\'affiche ?';
+
+require_once 'Modele/Modele.php';
 
 class Billet extends Modele
 {
@@ -20,7 +20,7 @@ class Billet extends Modele
 		if ($billet->rowCount() == 1)
 			return $billet->fetch(); //accès à la première ligne de résultat
 		else
-			throw new Exception ("Aucun billet ne correspond à l'identifiant "$billet_id"");
+			throw new Exception ("Aucun billet ne correspond à l'identifiant '$billet_id'");
 
 	}
 

@@ -1,9 +1,7 @@
 
 <?php require('Modele/Modele.php'); ?>
 
-<?php $title = ' "Billet simple pour l\'Alaska"'; ?>
-
-<?php ob_start(); ?>
+<?php $this->$title = ' "Billet simple pour l\'Alaska"'; ?>
 
 	<h1>Bienvenue sur le blog de Jean Forteroche</h1>
 	<p>Retrouvez ici les chapitres de mon livre "Billet simple pour l'Alaska" :</p>
@@ -15,7 +13,7 @@
 	    <article>
 	    	<header>
 	        <h3 class="billetTitle">
-	            <a href="<?= "index.php?action=billet&id=" . $billet['id'] ?>"><!--lien vers un billet-->
+	            <a href="<?= "index.php?action=billet&id=" . $billet['billet_id'] ?>"><!--lien vers un billet-->
 	            <?= htmlspecialchars($billet['billet_title']) ?>
 	        	</a>
 	        </h3>
@@ -31,9 +29,5 @@
 	<?php
 	endforeach;
 	?>
-<?php $content = ob_get_clean(); ?>
-
-<?php require('View/Template.php'); ?>
-
 
 <!-- ?action=billet&billet_id=1-->
