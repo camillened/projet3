@@ -1,9 +1,7 @@
 
-<?php require 'Modele/Modele.php'; ?>
+<?php require_once('Modele/Modele.php'); ?>
 
-<?php $title = ' "Billet simple pour l\'Alaska" ' $billet['billet_title']; ?>
-
-<?php ob_start(); ?>
+<?php $this->title = ' "Billet simple pour l\'Alaska" ' . $billet['billet_title']; ?>
 
     <article>
     	<header>
@@ -18,15 +16,16 @@
     </article>
     <article>
         <h2 id="titrecommentaires">Commentaires sur l'article</h2>
-        <?php foreach ($commentaires as $commentaire): ?>
+        <?php foreach ($comments as $comment): ?>
 	        <p>
-	        	<?= htmlspecialchars($billet['comment_author']) ?>
+	        	<?= htmlspecialchars($comment['comment_author']) ?>
 	        </p>
 	        <p>
-	        	<?= htmlspecialchars($billet['comment_content']) ?>
+	        	<?= htmlspecialchars($comment['comment_content']) ?>
 	        </p>
 		<?php endforeach; ?>
     </article>
-<?php $content = ob_get_clean(); ?>
 
-<?php require 'View/Template.php'; ?>
+
+
+<!-- ?action=billet&billet_id=1-->

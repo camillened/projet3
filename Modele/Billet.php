@@ -2,7 +2,7 @@
 
 echo 'est ce que "billet" s\'affiche ?';
 
-require_once 'Modele/Modele.php';
+require_once ('Modele/Modele.php');
 
 class Billet extends Modele
 {
@@ -25,4 +25,3 @@ class Billet extends Modele
 	}
 
 }
-

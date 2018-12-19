@@ -9,7 +9,7 @@ class View {
 
   public function __construct($action) {
     // Détermination du nom du fichier vue à partir de l'action
-    $this->fichier = . $action . "View/view.php";
+    $this->fichier = "View/" . $action . "view.php";
   }
 
   // Génère et affiche la vue

@@ -1,3 +1,4 @@
+
 <?php
 
 require_once 'Controller/HomeController.php';
@@ -26,7 +27,7 @@ class Routeur {
         {
           if (isset($_GET['id'])) 
           {
-            $idBillet = intval($_GET['id']);
+            $billet_id = intval($_GET['id']);
             if ($billet_id != 0) 
             {
               $this->ctrlBillet->billet($billet_id);

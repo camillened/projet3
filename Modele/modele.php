@@ -6,33 +6,32 @@
 echo 'est ce que le modele s\'affiche ?';
 
 abstract class Modele 
-
 {
 
-private $db; // objet PDO d'accès à la DB
+  private $db; // objet PDO d'accès à la DB
 
-protected function executerRequete ($sql, $params = null)
-{
-  if ($params == null)//ex : pas de n° id  -> exécution directe
+  protected function executerRequete ($sql, $params = null)//execute une requete sql éventuellement paramétrée
   {
-    $resultat = $this->getDb()->query($sql);
+    if ($params == null)//ex : pas de n° id  -> exécution directe
+    {
+      $resultat = $this->getDb()->query($sql);
+    }
+    else//ex : on a un id billet -> requête préparée
+    {
+      $resultat = $this->getDb()->prepare($sql);
+      $resultat->execute($params);
+    }
+    return $resultat;
   }
-  else//ex : on a un id billet -> requête préparée
-  {
-    $resultat = $this->getDb()->prepare($sql);
-    $resultat->execute($params);
-  }
-  return $resultat;
-}
 
-private function getDb()
-{
-  if ($this->db == null)//création de la connexion
+  private function getDb()
   {
-    $this->$db = new PDO('mysql:host=localhost;dbname=projet3;charset=utf8',
-        'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    if ($this->db == null)//création de la connexion
+    {
+      $this->db = new PDO('mysql:host=localhost;dbname=projet3;charset=utf8',
+          'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    }
+    return $this->db;
   }
-  return $this->db;
-}
 
 }

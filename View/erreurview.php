@@ -4,4 +4,4 @@
 <p>Une erreur est survenue : <?= $msgErreur ?></p>
 <?php $content = ob_get_clean(); ?>
 
-<?php require 'View/Template.php'; ?>
+<?php require_once ('View/Template.php'); ?>

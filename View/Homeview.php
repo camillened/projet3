@@ -1,7 +1,7 @@
 
-<?php require('Modele/Modele.php'); ?>
+<?php require_once('Modele/Modele.php'); ?>
 
-<?php $this->$title = ' "Billet simple pour l\'Alaska"'; ?>
+<?php $this->title = ' Billet simple pour l\'Alaska '; ?>
 
 	<h1>Bienvenue sur le blog de Jean Forteroche</h1>
 	<p>Retrouvez ici les chapitres de mon livre "Billet simple pour l'Alaska" :</p>
@@ -29,5 +29,3 @@
 	<?php
 	endforeach;
 	?>
-
-<!-- ?action=billet&billet_id=1-->
