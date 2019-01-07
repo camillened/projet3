@@ -3,8 +3,6 @@
 <?php
 //la classe modele est abstraite : fourni à ses classes dérivées un service d'exécution d'une requête sql
 
-echo 'est ce que le modele s\'affiche ?';
-
 abstract class Modele 
 {
 

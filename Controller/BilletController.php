@@ -1,7 +1,7 @@
 <?php
 
-require_once ('Modele/Billet.php');
-require_once ('Modele/Comment.php');
+require_once ('Controller/ModeleAutoloader.php');
+ModeleAutoloader::register();
 require_once ('View/View.php');
 
 class BilletController {

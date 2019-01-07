@@ -1,8 +1,7 @@
 <?php
 
-echo 'est ce que "billet" s\'affiche ?';
-
-require_once ('Modele/Modele.php');
+require_once ('Controller/ModeleAutoloader.php');
+ModeleAutoloader::register();
 
 class Billet extends Modele
 {
