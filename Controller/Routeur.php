@@ -38,6 +38,12 @@ class Routeur {
           else
             throw new Exception("Identifiant de billet non défini");
         }
+                        else if ($_GET['action'] == 'comment') {
+                    $author = $this->getParametre($_POST, 'author');
+                    $content = $this->getParametre($_POST, 'content');
+                    $billet_id = $this->getParametre($_POST, 'id');
+                    $this->ctrlBillet->commenter($author, $content, $billet_id);
+                }
         else
           throw new Exception("Action non valide");
       }
@@ -57,4 +63,14 @@ class Routeur {
     $view = new View("Erreur");
     $view->generer(array('msgErreur' => $msgErreur));
   }
+
+    // Recherche un paramètre dans un tableau
+  private function getParametre($tableau, $nom) {
+    if (isset($tableau[$nom])) {
+      return $tableau[$nom];
+    }
+    else
+      throw new Exception("Paramètre '$nom' absent");
+  }
+
 }

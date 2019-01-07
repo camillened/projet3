@@ -23,4 +23,13 @@ class BilletController {
     $view = new View("Billet");
     $view->generer(array('billet' => $billet, 'comments' => $comments));
   }
+
+  //ajoute un commentaire à un billet
+  public function commenter($author, $content, $billet_id)
+  {
+    // Sauvegarde le commentaire
+    $this->comment->addComment($author, $content, $billet_id);
+    // actualiser l'affichage du billet avec le nouveau commentaire
+    $this->billet($billet_id);
+  }
 }
