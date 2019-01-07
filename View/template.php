@@ -16,7 +16,7 @@
       </div> <!-- #content -->
 
       <footer id="footer">
-        <p><a href="   lien Connexion   ">Connexion</a></p>
+        <p><a href="index.php?action=login">Connexion</a></p>
       </footer> <!-- #footer -->
     </div> <!-- #all -->
   </body>

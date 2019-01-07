@@ -12,7 +12,7 @@ class Billet extends Modele
 		$billets = $this->executerRequete($sql);
 		return $billets;
 	}
-	public function getBillet($billet_id)
+	public function getBillet($billet_id)//renvoie un billet
 	{
 		$sql = 'SELECT billet_id, billet_date, billet_title, billet_content FROM billets WHERE billet_id=?';
 		$billet = $this->executerRequete($sql, array($billet_id));

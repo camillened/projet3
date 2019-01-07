@@ -4,7 +4,9 @@ require_once ('Controller/ModeleAutoloader.php');
 ModeleAutoloader::register();
 require_once ('View/View.php');
 
-class BilletController {
+class BilletController 
+
+{
 
   private $billet;
   private $comment;

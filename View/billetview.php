@@ -28,7 +28,7 @@
 		<?php endforeach; ?>
     </article>
 
-            <!-- ajout d'un commentaire-->
+    <!-- formulaire d'ajout d'un commentaire-->
     <article>
         <form method="post" action="index.php?action=comment"> 
             <input id="author" name="author" type="text" placeholder="Votre nom" required /><br/>
@@ -37,3 +37,4 @@
             <input type="submit" value="Commenter"/>
         </form>    
     </article>
+    
