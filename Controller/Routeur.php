@@ -1,22 +1,25 @@
-
 <?php
 
 require_once 'Controller/HomeController.php';
 require_once 'Controller/BilletController.php';
 require_once 'Controller/LoginController.php';
+require_once 'Controller/AdminController.php';
 require_once 'View/View.php';
+
 
 class Routeur {
 
   private $ctrlHome;
   private $ctrlBillet;
   private $ctrlLogin;
+  private $ctrlAdmin;
 
   public function __construct() 
   {
     $this->ctrlHome = new HomeController();
     $this->ctrlBillet = new BilletController();
     $this->ctrlLogin = new LoginController();
+    $this->ctrlAdmin = new AdminController();
   }
 
   // Traite une requête entrante
@@ -24,7 +27,7 @@ class Routeur {
   {
     try {
       if (isset($_GET['action'])) {
-
+        //affiche un billet
         if ($_GET['action'] == 'billet') {
           if (isset($_GET['id'])) {
             $billet_id = intval($_GET['id']);
@@ -34,16 +37,18 @@ class Routeur {
               throw new Exception("Identifiant de billet non valide");
           } else
             throw new Exception("Identifiant de billet non défini");
-
+        //ajoute un commentaire
         } else if ($_GET['action'] == 'comment') {
           $author = $this->getParametre($_POST, 'author');
           $content = $this->getParametre($_POST, 'content');
           $billet_id = $this->getParametre($_POST, 'id');
           $this->ctrlBillet->commenter($author, $content, $billet_id);
-        
+        //affiche la page de connexion
         } else if ($_GET['action'] == 'login') {
           $this->ctrlLogin->login();
 
+        } else if ($_GET['action'] == 'admin') {
+          $this->ctrlAdmin->admin();
         } else
           throw new Exception("Action non valide");
 

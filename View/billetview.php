@@ -1,4 +1,3 @@
-
 <?php require_once('Modele/Modele.php'); ?>
 
 <!--titre de la page-->

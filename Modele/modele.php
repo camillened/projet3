@@ -1,6 +1,5 @@
-
-
 <?php
+
 //la classe modele est abstraite : fourni à ses classes dérivées un service d'exécution d'une requête sql
 
 abstract class Modele 
