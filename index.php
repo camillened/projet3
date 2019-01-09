@@ -2,7 +2,7 @@
 require ("vendor/autoload.php");
 
 use \Michelf\markdown;
-use Controller;
+use App;
 
 $routeur = new Routeur();
 $routeur->routerRequete();

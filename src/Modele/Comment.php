@@ -1,7 +1,5 @@
 <?php namespace App\Modele;
 
-require ("vendor/autoload.php");
-
 use \Michelf\markdown;
 
 require_once ('Controller/ModeleAutoloader.php');

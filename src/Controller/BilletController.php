@@ -1,9 +1,8 @@
 <?php namespace App\Controller;
 
-require ("vendor/autoload.php");
-
 use \Michelf\markdown;
-use App\Modele;
+use App\Modele\billet;
+use App\modele\comment;
 use App\View;
 
 
