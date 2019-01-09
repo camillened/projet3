@@ -1,4 +1,8 @@
-<?php
+<?php namespace App\Controller;
+
+require ("vendor/autoload.php");
+
+use \Michelf\markdown;
 
 class ModeleAutoloader
 

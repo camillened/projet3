@@ -1,4 +1,8 @@
-<?php
+<?php namespace App\Modele;
+
+require ("vendor/autoload.php");
+
+use \Michelf\markdown;
 
 //la classe modele est abstraite : fourni à ses classes dérivées un service d'exécution d'une requête sql
 

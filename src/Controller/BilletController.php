@@ -1,8 +1,11 @@
-<?php
+<?php namespace App\Controller;
 
-require_once ('Controller/ModeleAutoloader.php');
-ModeleAutoloader::register();
-require_once ('View/View.php');
+require ("vendor/autoload.php");
+
+use \Michelf\markdown;
+use App\Modele;
+use App\View;
+
 
 class BilletController 
 

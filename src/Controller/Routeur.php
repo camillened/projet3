@@ -1,11 +1,10 @@
-<?php
+<?php namespace App\Controller;
 
-require_once 'Controller/HomeController.php';
-require_once 'Controller/BilletController.php';
-require_once 'Controller/LoginController.php';
-require_once 'Controller/AdminController.php';
-require_once 'View/View.php';
+require ("vendor/autoload.php");
 
+use \Michelf\markdown;
+use App\View;
+use App\Controller;
 
 class Routeur {
 

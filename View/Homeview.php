@@ -1,5 +1,11 @@
 
-<?php require_once('Modele/Modele.php'); ?>
+<?php namespace View;
+
+require ("vendor/autoload.php");
+
+use \Michelf\markdown;
+use App\Modele;
+?>
 
 <?php $this->title = ' Billet simple pour l\'Alaska '; ?>
 

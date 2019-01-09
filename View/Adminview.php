@@ -1,7 +1,13 @@
-<?php require_once('Modele/Modele.php'); ?>
+<?php namespace View;
+
+require ("vendor/autoload.php");
+
+use \Michelf\markdown;
+use App\Modele;
+?>
 
 <!--titre de la page-->
-<?php $this->title = ' "Administration - Billet simple pour l\'Alaska" '; ?>
+<?php $this->title = ' Administration - "Billet simple pour l\'Alaska" '; ?>
 
     <!--contenu de l'article-->
     <article>

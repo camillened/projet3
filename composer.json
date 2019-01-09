@@ -1,0 +1,15 @@
+{
+    "name": "projet3/alaska",
+    "require": {
+        "michelf/php-markdown": "^1.8"
+    },
+    "authors": [
+        {
+            "name": "camille",
+            "email": "camille.nedjar@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {"App\\" : "src/"}
+    }
+}

@@ -1,11 +1,12 @@
-<?php
+<?php namespace App\Controller;
 
-require_once ('Controller/ModeleAutoloader.php');
-ModeleAutoloader::register();
-require_once ('View/View.php');
+require ("vendor/autoload.php");
 
-class AdminController 
-{
+use \Michelf\markdown;
+use App\Modele;
+use App\View;
+
+class HomeController {
 
   private $billet;
 
@@ -15,10 +16,10 @@ class AdminController
   }
 
   // Affiche la liste de tous les billets du blog
-  public function admin() 
+  public function home() 
   {
     $billets = $this->billet->getBillets();
-    $view = new View("Admin");
+    $view = new View("Home");
     $view->generer(array('billets' => $billets));
   }
 }
