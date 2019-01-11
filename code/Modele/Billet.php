@@ -2,9 +2,6 @@
 
 use \Michelf\markdown;
 
-require_once ('Controller/ModeleAutoloader.php');
-ModeleAutoloader::register();
-
 class Billet extends Modele
 {
 

@@ -1,4 +1,4 @@
-<?php 
+<?php namespace App\Templating;
 
 class View {
 
@@ -9,7 +9,7 @@ class View {
 
   public function __construct($action) {
     // Détermination du nom du fichier vue à partir de l'action
-    $this->fichier = "View/" . $action . "view.php";
+    $this->fichier = "templates/" . $action . "view.php";
   }
 
   // Génère et affiche la vue
@@ -17,7 +17,7 @@ class View {
     // Génération de la partie spécifique de la vue
     $content = $this->genererFichier($this->fichier, $data);
     // Génération du gabarit commun utilisant la partie spécifique
-    $view = $this->genererFichier('View/template.php',
+    $view = $this->genererFichier('templates/template.php',
       array('title' => $this->title, 'content' => $content));
     // Renvoi de la vue au navigateur
     echo $view;

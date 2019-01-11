@@ -1,11 +1,10 @@
 <?php namespace App\Controller;
 
 use \Michelf\markdown;
-use App\Modele\billet;
-use App\View;
+use App\Modele\Billet;
+use App\Templating\view;
 
-class AdminController 
-{
+class HomeController {
 
   private $billet;
 
@@ -15,10 +14,10 @@ class AdminController
   }
 
   // Affiche la liste de tous les billets du blog
-  public function admin() 
+  public function home() 
   {
     $billets = $this->billet->getBillets();
-    $view = new View("Admin");
+    $view = new View("Home");
     $view->generer(array('billets' => $billets));
   }
 }

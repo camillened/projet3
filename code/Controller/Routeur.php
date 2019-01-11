@@ -1,11 +1,8 @@
 <?php namespace App\Controller;
 
 use \Michelf\markdown;
-use App\Controller\AdminController;
-use App\Controller\BilletController;
-use App\Controller\HomeController;
-use App\Controller\LoginController;
-use App\Controller\AdminController;
+use Exception;
+use App\Templating\View;
 
 class Routeur {
 

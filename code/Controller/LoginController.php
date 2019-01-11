@@ -1,7 +1,7 @@
 <?php namespace App\Controller;
 
 use \Michelf\markdown;
-use App\View;
+use App\Templating\View;
 
 class LoginController {
 

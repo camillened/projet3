@@ -1,4 +1,3 @@
-
 <?php namespace View;
 
 require ("vendor/autoload.php");

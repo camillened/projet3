@@ -1,9 +1,9 @@
 <?php namespace App\Controller;
 
 use \Michelf\markdown;
-use App\Modele\billet;
-use App\modele\comment;
-use App\View;
+use App\Modele\Billet;
+use App\Modele\Comment;
+use App\Templating\View;
 
 
 class BilletController 

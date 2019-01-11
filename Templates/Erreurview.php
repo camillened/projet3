@@ -11,4 +11,4 @@ $title = '"Billet simple pour l\'Alaska"'; ?>
 <p>Une erreur est survenue : <?= $msgErreur ?></p>
 <?php $content = ob_get_clean(); ?>
 
-<?php require_once ('View/Template.php'); ?>
+<?php require_once ('Templates/Template.php'); ?>
