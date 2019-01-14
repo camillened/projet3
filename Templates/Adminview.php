@@ -26,12 +26,12 @@ use App\Modele;
         <?php 
         foreach ($billets as $billet): 
         ?>
-            <h3 class="billetTitle">
-            <a href="<?= "index.php?action=billet&id=" . $billet['billet_id'] ?>"><!--lien vers un billet-->
-            <?= htmlspecialchars($billet['billet_title']) ?>
-            </a>
+            <h3 class="billetTitle"><!--lien vers un billet-->
+            <a href="<?= "index.php?action=billet&id=" . $billet['billet_id'] ?>">
+            <?= htmlspecialchars($billet['billet_title']) ?> </a>
             </h3>
-            <em>le <?= $billet['billet_date'] ?></em>
+            <em>Publié le <?= $billet['billet_date'] ?></em>
+            <!--modifier le billet-->
             <input type="submit" value="Modifier"/>
     </article>
 

@@ -15,12 +15,12 @@ use App\Modele;
             <h1 class="connexiontitle">
             Connectez-vous pour accéder à l'administration
             </h1>
-            <p>Identifiant</p>
-            <form method="post" action="index.php?action=admin&id=<?/*à ajouter id*/?>&pass=<?/*motdepasse*/?>"> 
-                <input type="text" name="identifiant"/>
-                <p>Mot de passe</p>
-                <input type="text" name="motdepasse" /><br/>
+            <form class="formconnexion" method="post" action=index.php?action=admin > 
+                <input type="text" name="pseudo" placeholder="Pseudo" /><br/>
+                <input type="text" name="password" placeholder="Mot de passe" /><br/>
                 <input type="submit" value="Connexion"/>
             </form>
+            <?php}
+            ?>
     	</header>
     </article>
