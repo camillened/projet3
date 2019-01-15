@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!--on ouvre la fenetre à la largeur de l'écran (pour les smartphones)-->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!--Tiny MCE-->
+    <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    <script type="text/javascript">tinymce.init({
+    selector: '#mytextarea',
+    language: 'fr_FR'
+    });</script>
     <title><?= $title ?></title>
   </head>
   <body>
