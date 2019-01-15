@@ -11,6 +11,7 @@ class Routeur {
   private $ctrlLogin;
   private $ctrlAdmin;
   private $ctrlAddBillet;
+  private $ctrlDeleteBillet;
 
   public function __construct() 
   {
@@ -19,6 +20,7 @@ class Routeur {
     $this->ctrlLogin = new LoginController();
     $this->ctrlAdmin = new AdminController();
     $this->ctrlAddBillet = new AddBilletController();
+    $this->ctrlDeleteBillet = new DeleteBilletController();
   }
 
   // Traite une requête entrante
@@ -56,6 +58,16 @@ class Routeur {
           $title = $this->getParametre($_POST, 'title');
           $content = $this->getParametre($_POST, 'content');
           $this->ctrlAddBillet->saveNew($title, $content);
+        //supprime un billet
+        } elseif ($_GET['action'] == 'deletebillet') {
+          if (isset($_GET['id'])) {
+            $billet_id = intval($_GET['id']);
+            if ($billet_id != 0) {
+              $this->ctrlDeleteBillet->delBillet($billet_id);
+            } else
+              throw new Exception("Identifiant de billet non valide");
+          } else
+            throw new Exception("Identifiant de billet non défini");
 
         } else
           throw new Exception("Action non valide");

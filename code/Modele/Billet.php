@@ -21,11 +21,16 @@ class Billet extends Modele
 			throw new Exception ("Aucun billet ne correspond à l'identifiant '$billet_id'");
 
 	}
-	public function saveNewBillet($title, $content) 
+	public function saveNewBillet($title, $content)//enregistre un nouveau billet
 	{
   		$sql = 'INSERT INTO billets (billet_date, billet_title, billet_content) VALUES (?,?,?)';
   		$date = date("Y-m-d");//récupère la date
   		$this->executerRequete($sql, array($date, $title, $content));
+	}
+	public function deleteBillet($billet_id)//supprime un billet
+	{
+		$sql = 'DELETE FROM billets WHERE billet_id=?';
+		$billet = $this->executerRequete($sql, array($billet_id));
 	}
 
 }

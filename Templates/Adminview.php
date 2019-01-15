@@ -19,7 +19,9 @@ use App\Modele;
     </article>
 
     <article>
+        <form  method="post" action="<?= "index.php?action=addbillet"?>">
         <input type="submit" value="Nouveau billet"/>
+        </form>
     </article>
 
     <article>
@@ -31,8 +33,13 @@ use App\Modele;
             <?= htmlspecialchars($billet['billet_title']) ?> </a>
             </h3>
             <em>Publié le <?= $billet['billet_date'] ?></em>
-            <!--modifier le billet-->
-            <input type="submit" value="Modifier"/>
+            <!--modifier ou supprimer le billet-->
+            <form  method="post" action="<?= "index.php?action=updatebillet&id=" . $billet['billet_id'] ?>">
+            <input type="submit" value="Modifier"/><br/>
+            </form>
+            <form method="post" action="<?= "index.php?action=deletebillet&id=" . $billet['billet_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment supprimer ?')){return true;}else{return false;}">
+            <input type="submit" value="Supprimer"/>
+            </form>
     </article>
 
     <?php
