@@ -26,7 +26,7 @@ use App\Modele;
 	    	</header>
 	        
 	        <p>
-	            <?= nl2br(htmlspecialchars($billet['billet_content'])) ?><br />
+	            <?= nl2br($billet['billet_content']) ?><br />
 	            <em><a href="post.php?id=<?= $billet['billet_id'] ?>">Commentaires</a></em>
 	        </p>
 	    </article>

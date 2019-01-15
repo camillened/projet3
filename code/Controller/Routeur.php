@@ -10,6 +10,7 @@ class Routeur {
   private $ctrlBillet;
   private $ctrlLogin;
   private $ctrlAdmin;
+  private $ctrlAddBillet;
 
   public function __construct() 
   {
@@ -17,6 +18,7 @@ class Routeur {
     $this->ctrlBillet = new BilletController();
     $this->ctrlLogin = new LoginController();
     $this->ctrlAdmin = new AdminController();
+    $this->ctrlAddBillet = new AddBilletController();
   }
 
   // Traite une requête entrante
@@ -43,9 +45,18 @@ class Routeur {
         //affiche la page de connexion
         } else if ($_GET['action'] == 'login') {
           $this->ctrlLogin->login();
-
+        //affiche la page administrateur
         } else if ($_GET['action'] == 'admin') {
           $this->ctrlAdmin->admin();
+        //affiche la création d'un billet
+        } elseif ($_GET['action'] == 'addbillet') {
+          $this->ctrlAddBillet->addBillet();
+        //enregistre le nouveau billet (à créer)
+        }elseif ($_GET['action'] == 'savenewbillet') {
+          $title = $this->getParametre($_POST, 'title');
+          $content = $this->getParametre($_POST, 'content');
+          $this->ctrlAddBillet->saveNew($title, $content);
+
         } else
           throw new Exception("Action non valide");
 

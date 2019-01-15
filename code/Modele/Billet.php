@@ -21,5 +21,11 @@ class Billet extends Modele
 			throw new Exception ("Aucun billet ne correspond à l'identifiant '$billet_id'");
 
 	}
+	public function saveNewBillet($title, $content) 
+	{
+  		$sql = 'INSERT INTO billets (billet_date, billet_title, billet_content) VALUES (?,?,?)';
+  		$date = date("Y-m-d");//récupère la date
+  		$this->executerRequete($sql, array($date, $title, $content));
+	}
 
 }

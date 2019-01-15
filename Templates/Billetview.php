@@ -34,10 +34,11 @@ use App\Modele;
     </article>
 
     <!-- formulaire d'ajout d'un commentaire-->
+
     <article>
         <form method="post" action="index.php?action=comment"> 
-            <input id="author" name="author" type="text" placeholder="Votre nom" required /><br/>
-            <textarea id="contentComment" name="content" rows="4" placeholder="Votre commentaire" required></textarea><br/>
+            <input id="author" name="author" type="text" placeholder="Votre nom" size="30" maxlength="20" required /><br/>
+            <textarea id="contentComment" name="content" rows="4" placeholder="Votre commentaire (max.500caract.)" size="30" maxlength="500" required></textarea><br/>
             <input type="hidden" name="id" value="<?=$billet['billet_id']?>"/>
             <input type="submit" value="Commenter"/>
         </form>    
