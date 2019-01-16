@@ -22,6 +22,6 @@ use App\Modele;
         <form method="post" action="index.php?action=savenewbillet">
             <input name="title" type="text" placeholder="Titre du billet" size="30" maxlength="150" required /> 
             <textarea id="mytextarea" name="content" required></textarea>
-            <input type="submit" formnovalidate="true" value="Publier l'article" />
+            <input type="submit" formnovalidate="true" value="Publier" onclick="if(window.confirm('Voulez-vous vraiment publier le billet ?')){return true;}else{return false;}" />
         </form>
     </article>

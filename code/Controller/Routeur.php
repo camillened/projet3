@@ -12,6 +12,7 @@ class Routeur {
   private $ctrlAdmin;
   private $ctrlAddBillet;
   private $ctrlDeleteBillet;
+  private $ctrlUpdateBillet;
 
   public function __construct() 
   {
@@ -21,6 +22,7 @@ class Routeur {
     $this->ctrlAdmin = new AdminController();
     $this->ctrlAddBillet = new AddBilletController();
     $this->ctrlDeleteBillet = new DeleteBilletController();
+    $this->ctrlUpdateBillet = new UpdateBilletController();
   }
 
   // Traite une requête entrante
@@ -50,6 +52,7 @@ class Routeur {
         //affiche la page administrateur
         } else if ($_GET['action'] == 'admin') {
           $this->ctrlAdmin->admin();
+
         //affiche la création d'un billet
         } elseif ($_GET['action'] == 'addbillet') {
           $this->ctrlAddBillet->addBillet();
@@ -58,12 +61,37 @@ class Routeur {
           $title = $this->getParametre($_POST, 'title');
           $content = $this->getParametre($_POST, 'content');
           $this->ctrlAddBillet->saveNew($title, $content);
+
         //supprime un billet
         } elseif ($_GET['action'] == 'deletebillet') {
           if (isset($_GET['id'])) {
-            $billet_id = intval($_GET['id']);
+              $billet_id = intval($_GET['id']);
             if ($billet_id != 0) {
               $this->ctrlDeleteBillet->delBillet($billet_id);
+            } else
+              throw new Exception("Identifiant de billet non valide");
+          } else
+            throw new Exception("Identifiant de billet non défini");
+
+        //modif d'un billet existant
+        } elseif ($_GET['action'] == 'updatebillet') {
+            if (isset($_GET['id'])) {
+              $billet_id = intval($_GET['id']);
+            if ($billet_id != 0) {
+              $this->ctrlUpdateBillet->updateBillet($billet_id);
+            } else
+              throw new Exception("Identifiant de billet non valide");
+          } else
+            throw new Exception("Identifiant de billet non défini");
+        //enregistre la modification 
+        } elseif ($_GET['action'] == 'saveupdatebillet') {
+          if (isset($_GET['id'])) {
+            $billet_id = intval($_GET['id']);
+            if ($billet_id != 0) {
+              $title = $this->getParametre($_POST, 'title');
+              $content = $this->getParametre($_POST, 'content');
+              $billet_id = $this->getParametre($_POST, 'id');
+              $this->ctrlUpdateBillet->saveUpdate($title, $content, $billet_id);
             } else
               throw new Exception("Identifiant de billet non valide");
           } else
