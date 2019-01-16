@@ -33,10 +33,10 @@ class Billet extends Modele
 		$billet = $this->executerRequete($sql, array($billet_id));
 	}
 
-	public function saveUpdateBillet($title, $content, $id)
+	public function saveUpdateBillet($title, $content, $billet_id)
 	{
-		$sql = 'UPDATE billets SET billet_title=?,billet_content=?, WHERE billet_id=?';
-		$this->executerRequete($sql, array($title, $content));
+		$sql = 'UPDATE billets SET billet_title=?, billet_content=? WHERE billet_id=?';
+		$this->executerRequete($sql, array($title, $content, $billet_id));
 	}
 
 }
