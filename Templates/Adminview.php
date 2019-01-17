@@ -1,8 +1,8 @@
-<?php namespace View;
+<?php
+namespace View;
 
 require ("vendor/autoload.php");
 
-use \Michelf\markdown;
 use App\Modele;
 ?>
 
@@ -41,7 +41,22 @@ use App\Modele;
             <input type="submit" value="Supprimer"/>
             </form>
     </article>
+        <?php
+        endforeach;
+        ?>
 
-    <?php
-    endforeach;
-    ?>
+    <article>
+        <h3 class="billetTitle">
+            Commentaires à valider
+        </h3>
+        <?php 
+        foreach ($comments as $comment): 
+        ?>
+            <p>Auteur : <?= $comment['comment_author'] ?> <br/>
+            Commentaire : <?= $comment['comment_content'] ?> <br/>
+            Publié le : <?= $comment['comment_date'] ?> </p>
+        </article>
+
+        <?php
+        endforeach;
+        ?>

@@ -1,8 +1,8 @@
-<?php namespace View;
+<?php
+namespace View;
 
 require ("vendor/autoload.php");
 
-use \Michelf\markdown;
 use App\Modele;
 ?>
 
@@ -30,8 +30,17 @@ use App\Modele;
 	        <p>
 	        	<?= htmlspecialchars($comment['comment_content']) ?>
 	        </p>
+            <!-- signaler un commentaire -->
+            <form method="post" action="index.php?action=report">
+                <input type="hidden" name="comment_id" value="<?=$comment['comment_id']?>"/>
+                <input type="hidden" name="comment_priority" value="<?=$comment['comment_priority']?>"/>
+                <input type="hidden" name="billet_id" value="<?=$billet['billet_id']?>"/>
+                <input type="submit" value="Signaler"/>
+            </form>
 		<?php endforeach; ?>
     </article>
+
+
 
     <!-- formulaire d'ajout d'un commentaire-->
 

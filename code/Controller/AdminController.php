@@ -1,24 +1,27 @@
-<?php namespace App\Controller;
+<?php
+namespace App\Controller;
 
-use \Michelf\markdown;
 use App\Modele\Billet;
+use App\Modele\Comment;
 use App\Templating\View;
 
 class AdminController 
 {
+    private $billet;
+    private $comment;
 
-  private $billet;
+    public function __construct() 
+    {
+        $this->billet = new Billet();
+        $this->comment = new Comment();
+    }
 
-  public function __construct() 
-  {
-    $this->billet = new Billet();
-  }
-
-  // Affiche la liste de tous les billets du blog
-  public function admin() 
-  {
-    $billets = $this->billet->getBillets();
-    $view = new View("Admin");
-    $view->generer(array('billets' => $billets));
-  }
+// Affiche la liste de tous les billets du blog
+    public function admin() 
+    {
+        $billets = $this->billet->getBillets();
+        $comments = $this->comment->modComment();
+        $view = new View("Admin");
+        $view->generer(array('billets' => $billets, 'comments' => $comments));
+    }
 }

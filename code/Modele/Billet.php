@@ -1,6 +1,5 @@
-<?php namespace App\Modele;
-
-use \Michelf\markdown;
+<?php
+namespace App\Modele;
 
 class Billet extends Modele
 {

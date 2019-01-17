@@ -1,6 +1,6 @@
-<?php namespace App\Controller;
+<?php
+namespace App\Controller;
 
-use \Michelf\markdown;
 use Exception;
 use App\Templating\View;
 
@@ -10,9 +10,7 @@ class Routeur {
   private $ctrlBillet;
   private $ctrlLogin;
   private $ctrlAdmin;
-  private $ctrlAddBillet;
-  private $ctrlDeleteBillet;
-  private $ctrlUpdateBillet;
+  private $ctrlAdminBillet;
 
   public function __construct() 
   {
@@ -20,18 +18,22 @@ class Routeur {
     $this->ctrlBillet = new BilletController();
     $this->ctrlLogin = new LoginController();
     $this->ctrlAdmin = new AdminController();
-    $this->ctrlAddBillet = new AddBilletController();
-    $this->ctrlDeleteBillet = new DeleteBilletController();
-    $this->ctrlUpdateBillet = new UpdateBilletController();
+    $this->ctrlAdminBillet = new AdminBilletController();
   }
 
   // Traite une requête entrante
   public function routerRequete() 
   {
     try {
-      if (isset($_GET['action'])) {
+
+      if (!isset($_GET['action'])){
+        $this->ctrlHome->home();
+      }
+
+      switch ($_GET['action']) {
+
         //affiche un billet
-        if ($_GET['action'] == 'billet') {
+        case "billet": 
           if (isset($_GET['id'])) {
             $billet_id = intval($_GET['id']);
             if ($billet_id != 0) {
@@ -40,73 +42,90 @@ class Routeur {
               throw new Exception("Identifiant de billet non valide");
           } else
             throw new Exception("Identifiant de billet non défini");
+        break;
         //ajoute un commentaire
-        } else if ($_GET['action'] == 'comment') {
+        case "comment":
           $author = $this->getParametre($_POST, 'author');
           $content = $this->getParametre($_POST, 'content');
           $billet_id = $this->getParametre($_POST, 'id');
           $this->ctrlBillet->commenter($author, $content, $billet_id);
+        break;
+        //signale un commentaire
+        case "report":
+          $comment_priority = $this->getParametre($_POST, 'comment_priority');
+          $comment_id = $this->getParametre($_POST, 'comment_id');
+          $billet_id = $this->getParametre($_POST, 'billet_id');
+          $this->ctrlBillet->saveReport($comment_id, $comment_priority, $billet_id);
+          break;
+
         //affiche la page de connexion
-        } else if ($_GET['action'] == 'login') {
+        case "login":
           $this->ctrlLogin->login();
+        break;
         //affiche la page administrateur
-        } else if ($_GET['action'] == 'admin') {
+        case "admin":
           $this->ctrlAdmin->admin();
+        break;
 
         //affiche la création d'un billet
-        } elseif ($_GET['action'] == 'addbillet') {
-          $this->ctrlAddBillet->addBillet();
+        case "addbillet":
+          $this->ctrlAdminBillet->addBillet();
+        break;
         //enregistre le nouveau billet (à créer)
-        }elseif ($_GET['action'] == 'savenewbillet') {
+        case "savenewbillet":
           $title = $this->getParametre($_POST, 'title');
           $content = $this->getParametre($_POST, 'content');
-          $this->ctrlAddBillet->saveNew($title, $content);
+          $this->ctrlAdminBillet->saveNew($title, $content);
+        break;
 
         //supprime un billet
-        } elseif ($_GET['action'] == 'deletebillet') {
+        case "deletebillet":
           if (isset($_GET['id'])) {
               $billet_id = intval($_GET['id']);
             if ($billet_id != 0) {
-              $this->ctrlDeleteBillet->delBillet($billet_id);
+              $this->ctrlAdminBillet->delBillet($billet_id);
             } else
               throw new Exception("Identifiant de billet non valide");
           } else
             throw new Exception("Identifiant de billet non défini");
+        break;
 
         //modif d'un billet existant
-        } elseif ($_GET['action'] == 'updatebillet') {
+        case "updatebillet":
             if (isset($_GET['id'])) {
               $billet_id = intval($_GET['id']);
             if ($billet_id != 0) {
-              $this->ctrlUpdateBillet->updateBillet($billet_id);
+              $this->ctrlAdminBillet->updateBillet($billet_id);
             } else
               throw new Exception("Identifiant de billet non valide");
           } else
             throw new Exception("Identifiant de billet non défini");
+        break;
         //enregistre la modification 
-        } elseif ($_GET['action'] == 'saveupdatebillet') {
+        case "saveupdatebillet":
           if (isset($_GET['id'])) {
             $billet_id = intval($_GET['id']);
             if ($billet_id != 0) {
               $title = $this->getParametre($_POST, 'title');
               $content = $this->getParametre($_POST, 'content');
               $billet_id = $this->getParametre($_POST, 'id');
-              $this->ctrlUpdateBillet->saveUpdate($title, $content, $billet_id);
+              $this->ctrlAdminBillet->saveUpdate($title, $content, $billet_id);
             } else
               throw new Exception("Identifiant de billet non valide");
           } else
             throw new Exception("Identifiant de billet non défini");
+        break;
 
-        } else
-          throw new Exception("Action non valide");
-
-      } else {  // aucune action définie : affichage de l'accueil
-        $this->ctrlHome->home();
-      }
+        default:
+            throw new Exception("Action non définie");
+        break;
+      } 
     }
 
     catch (Exception $e)  {
-      $this->erreur($e->getMessage());}}
+      $this->erreur($e->getMessage());
+    }
+  }
 
   // Affiche une erreur
   private function erreur($msgErreur) {

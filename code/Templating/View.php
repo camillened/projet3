@@ -1,4 +1,5 @@
-<?php namespace App\Templating;
+<?php
+namespace App\Templating;
 
 class View {
 

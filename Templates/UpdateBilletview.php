@@ -1,8 +1,8 @@
-<?php namespace View;
+<?php
+namespace View;
 
 require ("vendor/autoload.php");
 
-use \Michelf\markdown;
 use App\Modele;
 ?>
 

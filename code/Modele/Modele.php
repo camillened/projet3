@@ -1,6 +1,6 @@
-<?php namespace App\Modele;
+<?php
+namespace App\Modele;
 
-use \Michelf\markdown;
 use PDO;
 
 //la classe modele est abstraite : fourni à ses classes dérivées un service d'exécution d'une requête sql
