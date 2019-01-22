@@ -16,7 +16,7 @@
   <body>
     <div id="all" class="container">
       <header id="header">
-          <a href="index.php"><h1 id="titreBlog">Billet simple pour l'Alaska</h1></a>
+        <a href="index.php"><img src="images/logo_principal.png" height="300"></a><!--a régler taille (300), mettre alt etc... dans le css-->
       </header><!-- #header -->
 
       <div id="content" class="row">

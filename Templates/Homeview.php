@@ -22,12 +22,11 @@ use App\Modele;
 	            <?= htmlspecialchars($billet['billet_title']) ?>
 	        	</a>
 	        </h3>
-	            <em>le <?= $billet['billet_date'] ?></em>
+	            <em>Publié le <?= $billet['billet_date'] ?></em>
 	    	</header>
 	        
 	        <p>
 	            <?= nl2br($billet['billet_content']) ?><br />
-	            <em><a href="post.php?id=<?= $billet['billet_id'] ?>">Commentaires</a></em>
 	        </p>
 	    </article>
 

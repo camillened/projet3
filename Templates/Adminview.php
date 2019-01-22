@@ -20,7 +20,7 @@ use App\Modele;
 
     <article>
         <form  method="post" action="<?= "index.php?action=addbillet"?>">
-        <input type="submit" value="Nouveau billet"/>
+        <input class="btn btn-sm btn-primary" type="submit" value="Nouveau billet"/>
         </form>
     </article>
 
@@ -35,10 +35,10 @@ use App\Modele;
             <em>Publié le <?= $billet['billet_date'] ?></em>
             <!--modifier ou supprimer le billet-->
             <form  method="post" action="<?= "index.php?action=updatebillet&id=" . $billet['billet_id'] ?>">
-            <input type="submit" value="Modifier"/><br/>
+            <input class="btn btn-sm btn-primary" type="submit" value="Modifier"/><br/>
             </form>
             <form method="post" action="<?= "index.php?action=deletebillet&id=" . $billet['billet_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment supprimer ?')){return true;}else{return false;}">
-            <input type="submit" value="Supprimer"/>
+            <input class="btn btn-sm btn-primary" type="submit" value="Supprimer"/>
             </form>
     </article>
         <?php
@@ -49,14 +49,29 @@ use App\Modele;
         <h3 class="billetTitle">
             Commentaires à valider
         </h3>
-        <?php 
-        foreach ($comments as $comment): 
-        ?>
-            <p>Auteur : <?= $comment['comment_author'] ?> <br/>
-            Commentaire : <?= $comment['comment_content'] ?> <br/>
-            Publié le : <?= $comment['comment_date'] ?> </p>
-        </article>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Auteur</th>
+                    <th>Commentaire</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <?php 
+            foreach ($comments as $comment): 
+            ?>
 
-        <?php
-        endforeach;
-        ?>
+            <tbody>
+                <tr>
+                    <td><?= $comment['comment_author'] ?></td>
+                    <td><?= $comment['comment_content']?></td>
+                    <td><?= $comment['comment_date']?></td>
+                    <td>Supprimer<br/>Approuver</td>
+                </tr>
+            </tbody>
+            <?php
+            endforeach;
+            ?>
+        </table>
+        </article>
