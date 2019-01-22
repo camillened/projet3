@@ -2,15 +2,18 @@
 namespace App\Controller;
 
 use App\Modele\Billet;
+use App\Modele\Comment;
 use App\Templating\View;
 
 class AdminBilletController 
 {
     private $billet;
+    private $comment;
 
     public function __construct() 
     {
         $this->billet = new Billet();
+        $this->comment = new Comment();
     }
 
     public function addBillet() 
@@ -43,8 +46,9 @@ class AdminBilletController
         $this->billet->saveUpdateBillet($title, $content, $billet_id);
 // actualiser la page admin avec le nouveau billet dans la liste
         $billets = $this->billet->getBillets();
+        $comments = $this->comment->modComment();
         $view = new View("Admin");
-        $view->generer(array('billets' => $billets));
+        $view->generer(array('billets' => $billets, 'comments' => $comments));//ou redirection (header?)?
     }
 
     public function delBillet($billet_id)
