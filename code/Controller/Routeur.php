@@ -28,9 +28,10 @@ class Routeur {
 
       if (!isset($_GET['action'])){
         $this->ctrlHome->home();
-      }
+      
+      } else {
 
-      switch ($_GET['action']) {
+      switch ($_GET['action']) {//a régler le soucis de la page d'accueil
 
         //affiche un billet
         case "billet": 
@@ -43,6 +44,7 @@ class Routeur {
           } else
             throw new Exception("Identifiant de billet non défini");
         break;
+
         //ajoute un commentaire
         case "comment":
           $author = $this->getParametre($_POST, 'author');
@@ -119,7 +121,7 @@ class Routeur {
         default:
             throw new Exception("Action non définie");
         break;
-      } 
+      } }
     }
 
     catch (Exception $e)  {
