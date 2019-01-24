@@ -12,13 +12,15 @@ class Comment extends Modele
     return $comments;
   }
 
-  public function modComment()//renvoie les commentaires à modérer
+  //renvoie les commentaires à modérer
+  public function modComment()
   {
     $sql = 'SELECT comment_id, comment_date, comment_author, comment_content, billet_id, comment_statut, comment_priority FROM comments WHERE comment_statut="attente" ORDER BY comment_priority DESC';
     $comments = $this->executerRequete($sql);
     return $comments;
   }
 
+  //ajoute un nouveau commentaire
   public function addComment ($author, $content, $billet_id)
   {
   	$sql = 'INSERT INTO comments (comment_date, comment_author, comment_content, billet_id) VALUES (?,?,?,?)';
@@ -26,11 +28,19 @@ class Comment extends Modele
   	$this->executerRequete($sql, array($date, $author, $content, $billet_id));
   }
 
+  //signale un commentaire
   public function reportComment($comment_priority, $comment_id)
   {
     $sql = 'UPDATE comments SET comment_priority=? WHERE comment_id=?';
     $comment_priority = 1;
     $this->executerRequete($sql, array($comment_priority, $comment_id));
+  }
+
+  //supprime un commentaire
+  public function deleteComment($comment_id)
+  {
+    $sql = 'DELETE FROM comments WHERE comment_id=?';
+    $billet = $this->executerRequete($sql, array($comment_id));
   }
 
 }

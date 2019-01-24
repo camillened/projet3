@@ -11,6 +11,7 @@ class Routeur {
   private $ctrlLogin;
   private $ctrlAdmin;
   private $ctrlAdminBillet;
+  private $ctrlAdminComment;
 
   public function __construct() 
   {
@@ -19,6 +20,7 @@ class Routeur {
     $this->ctrlLogin = new LoginController();
     $this->ctrlAdmin = new AdminController();
     $this->ctrlAdminBillet = new AdminBilletController();
+    $this->ctrlAdminComment = new AdminCommentController();
   }
 
   // Traite une requête entrante
@@ -60,6 +62,10 @@ class Routeur {
           $this->ctrlBillet->saveReport($comment_id, $comment_priority, $billet_id);
           break;
 
+
+
+        //back  
+
         //affiche la page de connexion
         case "login":
           $this->ctrlLogin->login();
@@ -91,6 +97,27 @@ class Routeur {
           } else
             throw new Exception("Identifiant de billet non défini");
         break;
+
+        //supprime un commentaire
+        case "deletecomment":
+          if (isset($_GET['id'])) {
+              $comment_id = intval($_GET['id']);
+            if ($comment_id != 0) {
+              $this->ctrlAdminComment->delComment($comment_id);
+            } else
+              throw new Exception("Identifiant de commentaire non valide");
+          } else
+            throw new Exception("Identifiant de commentaire non défini");
+        break;
+
+
+
+        //valide un commentaire
+        case "validcomment":
+
+
+        break;
+
 
         //modif d'un billet existant
         case "updatebillet":

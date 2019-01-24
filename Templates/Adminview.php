@@ -67,7 +67,11 @@ use App\Modele;
                     <td><?= $comment['comment_author'] ?></td>
                     <td><?= $comment['comment_content']?></td>
                     <td><?= $comment['comment_date']?></td>
-                    <td>Supprimer<br/>Approuver</td>
+                    <td>
+                        <form method="post" action="<?= "index.php?action=deletecomment&id=" . $comment['comment_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment supprimer ce commentaire ?')){return true;}else{return false;}">
+            <input class="btn btn-sm btn-primary" type="submit" value="Supprimer"/>
+            </form><br/>
+                        Approuver</td>
                 </tr>
             </tbody>
             <?php
