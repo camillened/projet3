@@ -8,6 +8,7 @@
     <!--Tiny MCE-->
     <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
     <script type="text/javascript">tinymce.init({
+    menubar: false,
     selector: '#mytextarea',
     language: 'fr_FR'
     });</script>
@@ -27,7 +28,7 @@
 
       <footer id="footer" class="row">
         <div class="col-xs-12 col-sm-6">
-          <p><a href="index.php?action=login">Administration</a></p>
+          <p><a href="index.php?action=admin">Administration</a></p>
         </div>
         <div class="col-xs-12 col-sm-6">
           © 2018 Copyright | Développé par Camille Nedjar Pour Jean Forteroche
