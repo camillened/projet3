@@ -32,7 +32,7 @@ class Comment extends Modele
   public function reportComment($comment_priority, $comment_id)
   {
     $sql = 'UPDATE comments SET comment_priority=? WHERE comment_id=?';
-    $comment_priority = 1;
+    $comment_priority = $comment_priority+1;
     $this->executerRequete($sql, array($comment_priority, $comment_id));
   }
 
@@ -40,7 +40,15 @@ class Comment extends Modele
   public function deleteComment($comment_id)
   {
     $sql = 'DELETE FROM comments WHERE comment_id=?';
-    $billet = $this->executerRequete($sql, array($comment_id));
+    $this->executerRequete($sql, array($comment_id));
+  }
+
+  //valide un commentaire
+  public function validComment($comment_id)
+  {
+    $sql = 'UPDATE comments SET comment_statut=? WHERE comment_id=?';
+    $comment_statut = 'valid';
+    $this->executerRequete($sql, array($comment_statut, $comment_id));
   }
 
 }

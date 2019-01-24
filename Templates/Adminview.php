@@ -68,10 +68,14 @@ use App\Modele;
                     <td><?= $comment['comment_content']?></td>
                     <td><?= $comment['comment_date']?></td>
                     <td>
+                        <!--supprime un commentaire-->
                         <form method="post" action="<?= "index.php?action=deletecomment&id=" . $comment['comment_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment supprimer ce commentaire ?')){return true;}else{return false;}">
-            <input class="btn btn-sm btn-primary" type="submit" value="Supprimer"/>
+            <input class="btn btn-sm btn-primary" type="submit" value="Supprimer"/></form>
             </form><br/>
-                        Approuver</td>
+                        <!--valide un commentaire-->
+                        <form method="post" action="<?= "index.php?action=validcomment&id=" . $comment['comment_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment supprimer ce commentaire ?')){return true;}else{return false;}">
+            <input class="btn btn-sm btn-primary" type="submit" value="Valider"/></form>
+                    </td>
                 </tr>
             </tbody>
             <?php

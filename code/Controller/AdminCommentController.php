@@ -28,4 +28,15 @@ class AdminCommentController
         $view = new View("Admin");
         $view->generer(array('billets' => $billets, 'comments' => $comments));
     }
+
+    public function valComment($comment_id)
+    {
+// valide le commentaire
+        $this->comment->validComment($comment_id);
+// actualiser la page admin à jour
+        $billets = $this->billet->getBillets();
+        $comments = $this->comment->modComment();
+        $view = new View("Admin");
+        $view->generer(array('billets' => $billets, 'comments' => $comments));
+    }
    }

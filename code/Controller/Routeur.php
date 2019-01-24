@@ -114,8 +114,14 @@ class Routeur {
 
         //valide un commentaire
         case "validcomment":
-
-
+          if (isset($_GET['id'])) {
+              $comment_id = intval($_GET['id']);
+            if ($comment_id != 0) {
+              $this->ctrlAdminComment->valComment($comment_id);
+            } else
+              throw new Exception("Identifiant de commentaire non valide");
+          } else
+            throw new Exception("Identifiant de commentaire non défini");
         break;
 
 
