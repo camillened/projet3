@@ -28,7 +28,8 @@
 
       <footer id="footer" class="row">
         <div class="col-xs-12 col-sm-6">
-          <p><a href="index.php?action=admin">Administration</a></p>
+          <p><a href="index.php?action=admin">Administration</a> - <a href="index.php?action=deconnexion"> Déconnexion </a>
+</p>
         </div>
         <div class="col-xs-12 col-sm-6">
           © 2018 Copyright | Développé par Camille Nedjar Pour Jean Forteroche

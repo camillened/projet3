@@ -12,6 +12,7 @@ class Routeur {
   private $ctrlAdmin;
   private $ctrlAdminBillet;
   private $ctrlAdminComment;
+  private $ctrlConnecte;
 
   public function __construct() 
   {
@@ -21,6 +22,7 @@ class Routeur {
     $this->ctrlAdmin = new AdminController();
     $this->ctrlAdminBillet = new AdminBilletController();
     $this->ctrlAdminComment = new AdminCommentController();
+    $this->ctrlConnecte = new ConnecteController();
   }
 
   // Traite une requête entrante
@@ -66,28 +68,45 @@ class Routeur {
 
         //back  
 
-        //affiche la page de connexion
-        case "login":
-          $this->ctrlLogin->login();
-        break;
-        //affiche la page administrateur
+        //affiche la page de connexion ou la page admin si connecté
         case "admin":
+          if(isset($_SESSION['login']) && $_SESSION['login'] != "") {
           $this->ctrlAdmin->admin();
+          } else {
+          $this->ctrlLogin->login();
+          }
+        break;
+
+        case "connecte":
+          if (isset($_POST['login']) && isset($_POST['password'])) {
+              $login = $this->getParametre($_POST, 'login');
+              $password = $this->getParametre($_POST, 'password');
+              $this->ctrlConnecte->connecter($login, $password);
+          } else
+              throw new Exception("Action impossible : login ou mot de passe non défini");
+
         break;
 
         //affiche la création d'un billet
         case "addbillet":
-          $this->ctrlAdminBillet->addBillet();
+          if(isset($_SESSION['login']) && $_SESSION['login'] != "") {
+            $this->ctrlAdminBillet->addBillet();
+          } else
+            throw new Exception ('Action impossible : vous devez être connecté pour effectuer cette action');
         break;
         //enregistre le nouveau billet (à créer)
         case "savenewbillet":
-          $title = $this->getParametre($_POST, 'title');
-          $content = $this->getParametre($_POST, 'content');
-          $this->ctrlAdminBillet->saveNew($title, $content);
+          if(isset($_SESSION['login']) && $_SESSION['login'] != "") {
+            $title = $this->getParametre($_POST, 'title');
+            $content = $this->getParametre($_POST, 'content');
+            $this->ctrlAdminBillet->saveNew($title, $content);
+          } else
+            throw new Exception ('Action impossible : vous devez être connecté pour effectuer cette action');
         break;
 
         //supprime un billet
         case "deletebillet":
+          if(isset($_SESSION['login']) && $_SESSION['login'] != "") {
           if (isset($_GET['id'])) {
               $billet_id = intval($_GET['id']);
             if ($billet_id != 0) {
@@ -96,10 +115,13 @@ class Routeur {
               throw new Exception("Identifiant de billet non valide");
           } else
             throw new Exception("Identifiant de billet non défini");
+          } else
+            throw new Exception ('Action impossible : vous devez être connecté pour effectuer cette action');
         break;
 
         //supprime un commentaire
         case "deletecomment":
+          if(isset($_SESSION['login']) && $_SESSION['login'] != "") {
           if (isset($_GET['id'])) {
               $comment_id = intval($_GET['id']);
             if ($comment_id != 0) {
@@ -108,12 +130,15 @@ class Routeur {
               throw new Exception("Identifiant de commentaire non valide");
           } else
             throw new Exception("Identifiant de commentaire non défini");
+          } else
+            throw new Exception ('Action impossible : vous devez être connecté pour effectuer cette action');
         break;
 
 
 
         //valide un commentaire
         case "validcomment":
+          if(isset($_SESSION['login']) && $_SESSION['login'] != "") {
           if (isset($_GET['id'])) {
               $comment_id = intval($_GET['id']);
             if ($comment_id != 0) {
@@ -122,12 +147,15 @@ class Routeur {
               throw new Exception("Identifiant de commentaire non valide");
           } else
             throw new Exception("Identifiant de commentaire non défini");
+          } else
+            throw new Exception ('Action impossible : vous devez être connecté pour effectuer cette action');
         break;
 
 
         //modif d'un billet existant
         case "updatebillet":
-            if (isset($_GET['id'])) {
+          if(isset($_SESSION['login']) && $_SESSION['login'] != "") {
+          if (isset($_GET['id'])) {
               $billet_id = intval($_GET['id']);
             if ($billet_id != 0) {
               $this->ctrlAdminBillet->updateBillet($billet_id);
@@ -135,9 +163,12 @@ class Routeur {
               throw new Exception("Identifiant de billet non valide");
           } else
             throw new Exception("Identifiant de billet non défini");
+          } else 
+            throw new Exception ('Action impossible : vous devez être connecté pour effectuer cette action');
         break;
         //enregistre la modification 
         case "saveupdatebillet":
+          if(isset($_SESSION['login']) && $_SESSION['login'] != "") {
           if (isset($_GET['id'])) {
             $billet_id = intval($_GET['id']);
             if ($billet_id != 0) {
@@ -149,6 +180,12 @@ class Routeur {
               throw new Exception("Identifiant de billet non valide");
           } else
             throw new Exception("Identifiant de billet non défini");
+          } else
+            throw new Exception ('Action impossible : vous devez être connecté pour effectuer cette action');
+        break;
+
+        case "deconnexion":
+          $this->ctrlConnecte->deconnecter();
         break;
 
         default:

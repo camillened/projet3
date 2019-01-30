@@ -28,8 +28,8 @@ class AdminBilletController
         $this->billet->saveNewBillet($title, $content);
 // actualiser la page admin avec le nouveau billet dans la liste
         $billets = $this->billet->getBillets();
-        $view = new View("Admin");
-        $view->generer(array('billets' => $billets));
+        $view = new AdminController;
+        $view->admin();
     }
 
 //charge la page d'édition avec le billet séléctionné
@@ -47,8 +47,8 @@ class AdminBilletController
 // actualiser la page admin avec le nouveau billet dans la liste
         $billets = $this->billet->getBillets();
         $comments = $this->comment->modComment();
-        $view = new View("Admin");
-        $view->generer(array('billets' => $billets, 'comments' => $comments));//ou redirection (header?)?
+        $view = new AdminController;
+        $view->admin();//ou redirection (header?)?
     }
 
     public function delBillet($billet_id)
@@ -57,8 +57,9 @@ class AdminBilletController
         $this->billet->deleteBillet($billet_id);
 // actualiser la page admin à jour
         $billets = $this->billet->getBillets();
-        $view = new View("Admin");
-        $view->generer(array('billets' => $billets));
+        $comments = $this->comment->modComment();
+        $view = new AdminController;
+        $view->admin();
     }
 
 }

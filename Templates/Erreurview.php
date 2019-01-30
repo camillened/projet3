@@ -5,10 +5,6 @@ require ("vendor/autoload.php");
 
 use App\Modele;
 
-$title = '"Billet simple pour l\'Alaska"'; ?>
+$this->title = '"Billet simple pour l\'Alaska"'; ?>
 
-<?php ob_start() ?>
 <p>Une erreur est survenue : <?= $msgErreur ?></p>
-<?php $content = ob_get_clean(); ?>
-
-<?php require_once ('Templates/Template.php'); ?>

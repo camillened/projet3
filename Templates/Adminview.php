@@ -68,6 +68,9 @@ use App\Modele;
                     <td><?= $comment['comment_content']?></td>
                     <td><?= $comment['comment_date']?></td>
                     <td>
+                        <!-- a ajouter le nombre de signalements par commentaires (ce commentaire a été signalé X fois) -->
+
+
                         <!--supprime un commentaire-->
                         <form method="post" action="<?= "index.php?action=deletecomment&id=" . $comment['comment_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment supprimer ce commentaire ?')){return true;}else{return false;}">
             <input class="btn btn-sm btn-primary" type="submit" value="Supprimer"/></form>

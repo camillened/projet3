@@ -15,9 +15,9 @@ use App\Modele;
             <h1 class="connexiontitle">
             Connectez-vous pour accéder à l'administration
             </h1>
-            <form class="formconnexion" method="post" action=index.php?action=admin > 
-                <input type="text" name="pseudo" placeholder="Pseudo" /><br/>
-                <input type="text" name="password" placeholder="Mot de passe" /><br/>
+            <form class="formconnexion" method="post" action=index.php?action=connecte > 
+                <input type="text" name="login" placeholder="Pseudo" required /><br/>
+                <input type="text" name="password" placeholder="Mot de passe" required /><br/>
                 <input class="btn btn-sm btn-primary" type="submit" value="Connexion"/>
             </form>
             <?php}
