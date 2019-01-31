@@ -9,47 +9,43 @@ use App\Modele;
 <!--titre de la page-->
 <?php $this->title = ' "Billet simple pour l\'Alaska" ' . $billet['billet_title']; ?>
 
-    <!--contenu de l'article-->
-    <article>
-    	<header>
-            <h1 class="billetTitle">
-            <?= htmlspecialchars($billet['billet_title']) ?>
-            </h1>
-            <em>le <?= $billet['billet_date'] ?></em>
-    	</header>
-        <p><?= $billet['billet_content'] ?></p>
-    </article>
+<!--contenu de l'article-->
+<article>
+	<header>
+        <h1 class="billetTitle">
+        <?= htmlspecialchars($billet['billet_title']) ?>
+        </h1>
+        <em>le <?= $billet['billet_date'] ?></em>
+	</header>
+    <p><?= $billet['billet_content'] ?></p>
+</article>
 
-    <!-- commentaires sur l'article-->
-    <article>
-        <h2 id="titrecommentaires">Commentaires sur l'article</h2>
-        <?php foreach ($comments as $comment): ?>
-	        <p>
-	        	<?= htmlspecialchars($comment['comment_author']) ?>
-	        </p>
-	        <p>
-	        	<?= htmlspecialchars($comment['comment_content']) ?>
-	        </p>
-            <!-- signaler un commentaire -->
-            <form method="post" action="index.php?action=report">
-                <input type="hidden" name="comment_id" value="<?=$comment['comment_id']?>"/>
-                <input type="hidden" name="comment_priority" value="<?=$comment['comment_priority']?>"/>
-                <input type="hidden" name="billet_id" value="<?=$billet['billet_id']?>"/>
-                <input type="submit" value="Signaler"/>
-            </form>
-		<?php endforeach; ?>
-    </article>
+<!-- commentaires sur l'article-->
+<article>
+    <h2 id="titrecommentaires">Commentaires sur l'article</h2>
+    <?php foreach ($comments as $comment): ?>
+        <p>
+        	<?= htmlspecialchars($comment['comment_author']) ?>
+        </p>
+        <p>
+        	<?= htmlspecialchars($comment['comment_content']) ?>
+        </p>
+        <!-- signaler un commentaire -->
+        <form method="post" action="index.php?action=report">
+            <input type="hidden" name="comment_id" value="<?=$comment['comment_id']?>"/>
+            <input type="hidden" name="comment_priority" value="<?=$comment['comment_priority']?>"/>
+            <input type="hidden" name="billet_id" value="<?=$billet['billet_id']?>"/>
+            <input type="submit" class="btn btn-sm btn-primary" value="Signaler"/>
+        </form>
+	<?php endforeach; ?>
+</article>
 
-
-
-    <!-- formulaire d'ajout d'un commentaire-->
-
-    <article>
-        <form method="post" action="index.php?action=comment"> 
-            <input id="author" name="author" type="text" placeholder="Votre nom" size="30" maxlength="20" required /><br/>
-            <textarea id="contentComment" name="content" rows="4" placeholder="Votre commentaire (max.500caract.)" size="30" maxlength="500" required></textarea><br/>
-            <input type="hidden" name="id" value="<?=$billet['billet_id']?>"/>
-            <input type="submit" value="Commenter"/>
-        </form>    
-    </article>
-    
+<!-- formulaire d'ajout d'un commentaire-->
+<article>
+    <form method="post" action="index.php?action=comment"> 
+        <input id="author" name="author" type="text" placeholder="Votre nom" size="30" maxlength="20" required /><br/>
+        <textarea id="contentComment" name="content" rows="4" placeholder="Votre commentaire (max.500caract.)" size="30" maxlength="500" required></textarea><br/>
+        <input type="hidden" name="id" value="<?=$billet['billet_id']?>"/>
+        <input type="submit" class="btn btn-sm btn-primary" value="Commenter"/>
+    </form>    
+</article>
