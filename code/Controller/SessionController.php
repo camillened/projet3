@@ -20,9 +20,8 @@ class SessionController
 	} 
 
 	//on assigne un attribut à la session
-	public function setAttribut($login, $password) {
+	public function setAttribut($login) {
 		$_SESSION['login'] = $login; 
-		$_SESSION['password'] = $password;
 	}
 	// vérifie l'existance d'une session (par rapport au login)
 	public function existeAttribut($login) {
