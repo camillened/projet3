@@ -10,31 +10,33 @@ use App\Modele;
 <?php $this->title = ' Administration - "Billet simple pour l\'Alaska" '; ?>
 
 <!--contenu de la page-->
+
+
 <article>
 	<header>
-        <nav class="navbar navbar-default">
-            <a class="navbar-brand" href="#">Administration</a>
-            <ul class="nav navbar-nav">
-                <li><a href="#ancrebillets">Billets</a></li>
-                <li><a href="#ancrecommentaires">Commentaires</a></li>
-                <li><a href="index.php?action=deconnexion">Déconnexion</a></li>
-            </ul>
-        </nav>
+        <h1> 
+            <form method="post" action="index.php?action=deconnexion">
+            Administration 
+            <input class="btn btn-sm btn-primary"  type="submit" value="Déconnexion" onclick="if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){return true;}else{return false;}">
+            </form>
+        </h1>
 	</header>
 </article>
 
-<article>
-    <h3 id="ancrebillets">
-        Gestion des billets
-    </h3>
-    <form  method="post" action="<?= "index.php?action=addbillet"?>">
+<div class="row">
+<article class="col-xs-12 col-sm-12 col-lg-6">
+    <h2>
+        <form method="post" action="index.php?action=addbillet">
+        Gestion des billets 
         <input class="btn btn-sm btn-primary" type="submit" value="Nouveau billet"/>
-    </form>
+        </form>
+    </h2>
+
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Titre</th>
-                <th>Date de publication</th>
+                <th>Publication</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -51,7 +53,7 @@ use App\Modele;
                     </h3>
                 </td>
                 <td>
-                    <em><?= $billet['billet_date'] ?></em>
+                    <em><?= $billet['billet_date']?></em>
                 </td>
                 <td>
                     <!--modifier ou supprimer le billet-->
@@ -71,10 +73,12 @@ use App\Modele;
 </article>
 
 
-<article>
-    <h3 id="ancrecommentaires">
+
+<article class="col-xs-12 col-sm-12 col-lg-6">
+    <h2>
         Commentaires à valider
-    </h3>
+    </h2>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -110,3 +114,7 @@ use App\Modele;
         ?>
     </table>
 </article>
+
+
+
+</div><!--row-->
