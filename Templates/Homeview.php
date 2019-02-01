@@ -14,12 +14,12 @@ foreach ($billets as $billet):
 
     <article>
         <header>
-            <h3 class="billetTitle">
+            <h3>
                 <a href="<?= "index.php?action=billet&id=" . $billet['billet_id'] ?>"><!--lien vers un billet-->
                 <?= htmlspecialchars($billet['billet_title']) ?>
         	    </a>
             </h3>
-                <em>Publié le <?= $billet['billet_date'] ?></em>
+                <strong>Publié le <?= $billet['billet_date'] ?></strong>
     	</header>
         
         <p>

@@ -25,7 +25,7 @@ use App\Modele;
     <form method="post" action="index.php?action=savenewbillet" class="col-lg-12">
             <div class="form-group">
                 <label for="texte">Titre </label>
-                <input name="title" type="text" placeholder="Titre du billet" size="30" maxlength="150" required /> 
+                <input name="title" type="text" class="form-control" placeholder="Titre du billet" size="30" maxlength="150" required /> 
             </div>
             <div class="form-group">
                 <label for="textarea" >Contenu du billet </label>

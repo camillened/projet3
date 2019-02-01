@@ -14,11 +14,11 @@ use App\Modele;
 
 <article>
 	<header>
-        <h1> 
-            <form method="post" action="index.php?action=deconnexion">
+        <h1 id="admintitle" class="borderbox"> 
             Administration 
+        <form method="post" action="index.php?action=deconnexion">
             <input class="btn btn-sm btn-primary"  type="submit" value="Déconnexion" onclick="if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){return true;}else{return false;}">
-            </form>
+        </form>
         </h1>
 	</header>
 </article>
@@ -28,7 +28,8 @@ use App\Modele;
     <h2>
         <form method="post" action="index.php?action=addbillet">
         Gestion des billets 
-        <input class="btn btn-sm btn-primary" type="submit" value="Nouveau billet"/>
+        <button class="btn btn-sm btn-primary" type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+
         </form>
     </h2>
 
@@ -46,22 +47,22 @@ use App\Modele;
 
         <tbody>
             <tr>
-                <td>
+                <td class="table-line">
                     <h3 class="billetTitle"><!--lien vers un billet-->
                     <a href="<?= "index.php?action=billet&id=" . $billet['billet_id'] ?>">
                     <?= htmlspecialchars($billet['billet_title']) ?> </a>
                     </h3>
                 </td>
-                <td>
+                <td class="table-line">
                     <em><?= $billet['billet_date']?></em>
                 </td>
-                <td>
+                <td class="table-line">
                     <!--modifier ou supprimer le billet-->
                     <form  method="post" action="<?= "index.php?action=updatebillet&id=" . $billet['billet_id'] ?>">
-                    <input class="btn btn-sm btn-primary" type="submit" value="Modifier"/><br/>
+                    <button class="btn btn-sm btn-primary" type="submit"><span class="glyphicon glyphicon-pencil"></span></button><br/>
                     </form>
                     <form method="post" action="<?= "index.php?action=deletebillet&id=" . $billet['billet_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment supprimer ?')){return true;}else{return false;}">
-                    <input class="btn btn-sm btn-primary" type="submit" value="Supprimer"/>
+                    <button class="btn btn-sm btn-danger" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
                     </form>
                 </td>
             </tr>
@@ -95,17 +96,17 @@ use App\Modele;
 
         <tbody>
             <tr>
-                <td><?= $comment['comment_author'] ?></td>
-                <td><?= $comment['comment_date']?></td>
-                <td><?= $comment['comment_content']?></td>
-                <td><?= $comment['comment_priority']?></td>
-                <td><!--supprime un commentaire-->
+                <td class="table-line"><?= $comment['comment_author'] ?></td>
+                <td class="table-line"><?= $comment['comment_date']?></td>
+                <td class="table-line"><?= $comment['comment_content']?></td>
+                <td class="table-line"><?= $comment['comment_priority']?></td>
+                <td class="table-line"><!--supprime un commentaire-->
                     <form method="post" action="<?= "index.php?action=deletecomment&id=" . $comment['comment_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment supprimer ce commentaire ?')){return true;}else{return false;}">
-                    <input class="btn btn-sm btn-primary" type="submit" value="Supprimer"/></form>
+                    <button class="btn btn-danger btn-sm" type="submit"><span class="glyphicon glyphicon-remove "></span></button></form>
                     </form>
                     <!--valide un commentaire-->
-                    <form method="post" action="<?= "index.php?action=validcomment&id=" . $comment['comment_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment supprimer ce commentaire ?')){return true;}else{return false;}">
-                    <input class="btn btn-sm btn-primary" type="submit" value="Approuver"/></form>
+                    <form method="post" action="<?= "index.php?action=validcomment&id=" . $comment['comment_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment valider ce commentaire ?')){return true;}else{return false;}">
+                    <button class="btn btn-sm btn-success" type="submit"><span class="glyphicon glyphicon-ok"></span></button></form>
                 </td>
             </tr>
         </tbody>

@@ -16,10 +16,13 @@
   </head>
   <body>
     <div id="allfluid" class="container-fluid">
-    <div id="all" class="container">
       <header id="header">
-        <a href="index.php"><img id="banniere" src="images/banniere_blog.png" alt="Un billet pour l'Alaska par Jean Forteroche" width="100%"></a><!--a régler taille (300), mettre alt etc... dans le css-->
+        <h1 id="maintitle"><a href="index.php">"Billet simple pour l'Alaska" par Jean Forteroche</a></h1>
+        <h2 id="subtitle">Bienvenue dans un voyage extraordinaire</h2>
       </header><!-- #header -->
+
+    <div id="all" class="container">
+
 
       <div id="content" class="container row">
         <div class="col-lg12">

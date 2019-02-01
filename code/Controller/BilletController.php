@@ -37,7 +37,7 @@ class BilletController
     //signale un commentaire
     public function saveReport($comment_id, $comment_priority, $billet_id)
     {
-        $this->comment->reportComment($comment_id, $comment_priority);
+        $this->comment->reportComment($comment_priority, $comment_id);
         $this->billet($billet_id);
     }
 }
