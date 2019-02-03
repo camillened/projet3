@@ -54,7 +54,7 @@ use App\Modele;
                     </h3>
                 </td>
                 <td class="table-line">
-                    <em><?= $billet['billet_date']?></em>
+                    <em><?= htmlspecialchars($billet['billet_date'])?></em>
                 </td>
                 <td class="table-line">
                     <!--modifier ou supprimer le billet-->
@@ -96,10 +96,10 @@ use App\Modele;
 
         <tbody>
             <tr>
-                <td class="table-line"><?= $comment['comment_author'] ?></td>
-                <td class="table-line"><?= $comment['comment_date']?></td>
-                <td class="table-line"><?= $comment['comment_content']?></td>
-                <td class="table-line"><?= $comment['comment_priority']?></td>
+                <td class="table-line"><?= htmlspecialchars($comment['comment_author']) ?></td>
+                <td class="table-line"><?= htmlspecialchars($comment['comment_date'])?></td>
+                <td class="table-line"><?= htmlspecialchars($comment['comment_content'])?></td>
+                <td class="table-line"><?= htmlspecialchars($comment['comment_priority'])?></td>
                 <td class="table-line"><!--supprime un commentaire-->
                     <form method="post" action="<?= "index.php?action=deletecomment&id=" . $comment['comment_id']  ?>" onclick="if(window.confirm('Voulez-vous vraiment supprimer ce commentaire ?')){return true;}else{return false;}">
                     <button class="btn btn-danger btn-sm" type="submit"><span class="glyphicon glyphicon-remove "></span></button></form>

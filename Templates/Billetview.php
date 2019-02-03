@@ -15,7 +15,7 @@ use App\Modele;
         <h3>
         <?= htmlspecialchars($billet['billet_title']) ?>
         </h3>
-        <em>le <?= $billet['billet_date'] ?></em>
+        <em>le <?= htmlspecialchars($billet['billet_date']) ?></em>
 	</header>
     <p><?= $billet['billet_content'] ?></p>
 </article>

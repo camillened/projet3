@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Modele\Billet;
-use App\Templating\view;
+use App\Templating\View;
 
 class HomeController
 {

@@ -12,11 +12,11 @@ abstract class Modele
 
   protected function executerRequete ($sql, $params = null)//execute une requete sql éventuellement paramétrée
   {
-    if ($params == null)//ex : pas de n° id  -> exécution directe
+    if ($params == null)//exécution directe
     {
       $resultat = $this->getDb()->query($sql);
     }
-    else//ex : on a un id billet -> requête préparée
+    else//requête préparée
     {
       $resultat = $this->getDb()->prepare($sql);
       $resultat->execute($params);

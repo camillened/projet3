@@ -27,7 +27,7 @@ class User extends Modele
 		$passsalt = "kL18" . $password . '*12cbg';
 		$passhash = sha1($passsalt);
         
-        $sql = "SELECT user_id, login, password FROM USERS WHERE login=? and password=?";
+        $sql = "SELECT user_id, login, password FROM users WHERE login=? and password=?";
         $user = $this->executerRequete($sql, array($login, $passhash));
         if ($user->rowCount() == 1)
             return $user->fetch();  // Accès à la première ligne de résultat

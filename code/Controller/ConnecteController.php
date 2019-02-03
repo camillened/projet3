@@ -24,12 +24,11 @@ class ConnecteController
                         $user['user_id']);
                 $this->getSession()->setAttribut("login",
                         $user['login']);
-                //faire redirection vers admin ???
                 $view = new AdminController();
                 $view->admin();
             } else {
                 $view = new LoginController();
-                $view->login();/// + rajouter message d'erreur : login ou mot de passe incorrect
+                $view->login();
             }
     }
     

@@ -35,7 +35,7 @@ class Routeur {
       
       } else {
 
-      switch ($_GET['action']) {//a régler le soucis de la page d'accueil
+      switch ($_GET['action']) {
 
         //affiche un billet
         case "billet": 
@@ -134,8 +134,6 @@ class Routeur {
             throw new Exception ('Action impossible : vous devez être connecté pour effectuer cette action');
         break;
 
-
-
         //valide un commentaire
         case "validcomment":
           if(isset($_SESSION['login']) && $_SESSION['login'] != "") {
@@ -150,7 +148,6 @@ class Routeur {
           } else
             throw new Exception ('Action impossible : vous devez être connecté pour effectuer cette action');
         break;
-
 
         //modif d'un billet existant
         case "updatebillet":

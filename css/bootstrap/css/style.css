@@ -1,13 +1,14 @@
 @font-face {
-    font-family: 'MartinessePolice';
+    font-family: 'Martinesse';
     src: url('polices/Martinesse-webfont.ttf') format('truetype'),
-         url('polices/Martinesse-webfont.woff') format('woff');
+         url('polices/Martinesse-webfont.woff') format('woff'),
+         url('polices/Martinesse-webfont.woff2') format('woff');
 }
 
 h1, h2
 {
   text-align: center;
-  font-family: Arial, Verdana;
+  font-family: 'Martinesse', Arial, Verdana;
 }
 
 #allfluid
@@ -80,6 +81,16 @@ em
 
 @media screen and (max-width: 800px)
 {
+    #allfluid
+  {
+
+    background-image: url(images/alaska.jpg);
+    background-size: auto 500px;
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-color: #efefef;
+  }
+
   #admintitle
   {
     border : 0px 0px 0px 0px;

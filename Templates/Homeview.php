@@ -19,7 +19,7 @@ foreach ($billets as $billet):
                 <?= htmlspecialchars($billet['billet_title']) ?>
         	    </a>
             </h3>
-                <strong>Publié le <?= $billet['billet_date'] ?></strong>
+                <strong>Publié le <?= htmlspecialchars($billet['billet_date']) ?></strong>
     	</header>
         
         <p>
