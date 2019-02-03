@@ -12,6 +12,6 @@ mdp : adminalaska
 code/Modele/Modele ligne 31
 ----------
 *Site disponible en ligne :*
-http://cnprojet3.raidghost.com/
+https://projet3.camille-nedjar.fr/
 
 Camille NEDJAR - Projet 3 : créer un blog - CPM Dev - OCR
