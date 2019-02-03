@@ -8,8 +8,10 @@ https://github.com/camillened/projet3
 login : JForteroche
 mdp : adminalaska
 ----------
-*a connexion à la bdd est à modifier selon le cas dans :*
+*Connexion bdd à modifier selon le cas dans :*
 code/Modele/Modele ligne 31
+----------
+*Site disponible en ligne :*
+http://cnprojet3.raidghost.com/
 
-Camille NEDJAR
-Projet 3 : créer un blog - CPM Dev - OCR
+Camille NEDJAR - Projet 3 : créer un blog - CPM Dev - OCR
